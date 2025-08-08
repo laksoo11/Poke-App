@@ -1,5 +1,16 @@
 .Navbar{
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     background-color: rgb(45, 155, 177);
-    padding: 10px;
+    padding: 5px;
+}
+
+.Navbar span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.Navbar {
+    margin: 0;
 }
