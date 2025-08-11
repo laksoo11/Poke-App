@@ -1,8 +1,8 @@
 const Pokedex = () => {
     return (  
-        <h1>
-            Pokedex
-        </h1>
+        <div className="pokedex-container">
+           <h1>This is your Pokedex</h1>
+        </div>
     );
 }
  

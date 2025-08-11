@@ -1,8 +1,9 @@
 const Home = () => {
     return ( 
-        <div>
+        <div className="home-container">
             <div>
-                HOMEPAGE
+                <h1>HOMEPAGE</h1>
+                <p>Welcome to the Pokemon World!!!</p>
             </div>
         </div>
      );

@@ -7,6 +7,8 @@ import Nabvar from './Navbar';
 import Home from './Home';
 import './navbar.css'
 import Pokedex from './Pokedex';
+import './Home.css'
+import './Pokedex.css'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
