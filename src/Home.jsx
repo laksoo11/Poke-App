@@ -75,7 +75,20 @@ const Home = () => {
 
         
 
-        {data && <h1>{data.name}</h1>}
+        {data &&  <div><h1>{data.name}</h1> 
+
+        <img
+              src={data.sprites.front_default}
+              alt={data.name}
+              style={{ width: "150px" }}
+            />
+
+                    <img
+              src={data.sprites.back_default}
+              alt={data.name}
+              style={{ width: "150px" }}
+            />
+             </div>}
 
             </div>
         </div>
