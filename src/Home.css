@@ -1,12 +1,32 @@
-
-
-
-
 /* home.css */
+
+
+
+
+
+.home {
+  min-height: 100vh; /* take full screen height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* keeps search bar at top */
+  background: linear-gradient(135deg, #ffcc00, #ff6600); /* orange gradient */
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+
+
+/* search bar alignment */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .home-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -17,6 +37,14 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* wrapper for text + pokedex card */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .home-container h1 {
   font-size: 3rem;
   margin-bottom: 10px;
@@ -25,8 +53,32 @@
 .home-container p {
   font-size: 1.2rem;
   max-width: 500px;
+  margin-bottom: 20px;
 }
 
+/* Input + Button */
+input {
+  padding: 20px;
+  border-radius: 8px;
+  border: none;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #111;
+}
 
 /* Pokedex card styling */
 .pokedex-card {
@@ -34,11 +86,12 @@
   border: 5px solid #333;
   border-radius: 20px;
   padding: 20px;
-  width: 300px;
+  width: 320px;
   text-align: center;
   color: white;
-  margin-top: 20px;
+  margin-top: 30px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .pokemon-name {
@@ -47,15 +100,17 @@
   margin-bottom: 10px;
 }
 
+/* colored type badges */
 .pokemon-type {
-  background: #ffcc00;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 12px;
-  color: #333;
   display: inline-block;
   font-weight: bold;
+  margin: 0 5px;
+  text-transform: capitalize;
 }
 
+/* Pokémon images */
 .pokemon-artwork {
   width: 200px;
   height: 200px;
@@ -66,4 +121,10 @@
   width: 120px;
   height: 120px;
   margin-top: 10px;
+}
+
+/* Small fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }

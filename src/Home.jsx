@@ -5,7 +5,7 @@ import "./Home.css";
 
 
 const typeColors = {
-  //normal: "#A8A77A",
+  normal: "#A8A77A",
   fire: "#EE8130",
   water: "#6390F0",
   electric: "#F7D02C",
@@ -75,8 +75,8 @@ const Home = () => {
 
    return (
     <div className="home-container">
-      <div>
-        <h1>HOMEPAGE</h1>
+      <div className="content-wrapper">
+        
         <p>Welcome to the Pokemon World!!!</p>
 
         <input
@@ -93,9 +93,24 @@ const Home = () => {
 
            <div className="pokedex-card">
           <h2 className="pokemon-name">{data.name}</h2>
-          <p className="pokemon-type">
-            Type: {data.types.map((t) => t.type.name).join(", ")}
-          </p>
+
+
+        {/* Show types with colored labels */}
+            <div>
+              {data.types.map((t) => (
+                <span
+                  key={t.type.name}
+                  className="pokemon-type"
+                  style={{
+                    background: typeColors[t.type.name],
+                    color: "#fff",
+                    margin: "0 5px",
+                  }}
+                >
+                  {t.type.name}
+                </span>
+              ))}
+            </div>
           
 
         
