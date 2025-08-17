@@ -1,6 +1,10 @@
-import { useState } from "react";
+
+
+import { useState, useContext } from "react";
 
 import "./Home.css";
+
+import { PokedexContext } from "./PokedexContext";
 
 
 
@@ -32,10 +36,15 @@ const Home = () => {
     const [name, SetName] = useState('');
     const [error, SetError] = useState('');
     const [loading, SetLoading] = useState(false);
+
+    const [success, SetSuccess] = useState("");
+    const { addToPokedex } = useContext(PokedexContext);
+     
     
     const HandleSubmit = () => {
 
         SetError("");
+        SetSuccess("");
         SetData(null);
         SetLoading(true);
 
@@ -71,6 +80,16 @@ const Home = () => {
 
     };
 
+    const handleAddToPokedex = () => {
+    addToPokedex(data);
+    SetSuccess(`${data.name} has been added to your Pokedex! ✅`);
+
+    // optional: hide success after 3s
+    setTimeout(() => {
+      SetSuccess("");
+    }, 3000);
+  };
+
 
 
    return (
@@ -86,6 +105,8 @@ const Home = () => {
         />
         <button onClick={HandleSubmit}>Search</button>
 
+        
+        
         {loading && <p style={{ color: "blue" }}>Loading...</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -93,6 +114,7 @@ const Home = () => {
 
            <div className="pokedex-card">
           <h2 className="pokemon-name">{data.name}</h2>
+          
 
 
         {/* Show types with colored labels */}
@@ -127,6 +149,15 @@ const Home = () => {
               alt={data.name}
               style={{ width: "150px", height: "150px", marginTop: "10px" }}
             />
+
+
+             {/* ✅ Add to Pokedex button */}
+             {/* Add to Pokedex button */}
+            <button onClick={handleAddToPokedex}>Add to Pokedex</button>
+
+            {/* ✅ Success message */}
+            {success && <p style={{ color: "green", marginTop: "10px" }}>{success}</p>}
+
           </div>
         )}
       </div>
