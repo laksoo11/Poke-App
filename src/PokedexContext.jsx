@@ -12,8 +12,12 @@ export const PokedexProvider = ({ children }) => {
     }
   };
 
+   const removeFromPokedex = (name) => {
+    setPokedex((prev) => prev.filter((p) => p.name !== name));
+  };
+
   return (
-    <PokedexContext.Provider value={{ pokedex, addToPokedex }}>
+    <PokedexContext.Provider value={{ pokedex, addToPokedex, removeFromPokedex }}>
       {children}
     </PokedexContext.Provider>
   );

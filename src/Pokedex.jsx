@@ -25,7 +25,7 @@ const typeColors = {
 };
 
 const Pokedex = () => {
-  const { pokedex } = useContext(PokedexContext);
+  const { pokedex, removeFromPokedex } = useContext(PokedexContext);
 
 return (
     <div className="pokedex-container">
@@ -39,7 +39,7 @@ return (
             <div key={index} className="pokedex-card">
               <h2 className="pokemon-name">{pokemon.name}</h2>
 
-              {/* Show types */}
+            
                {/* Show types with color */}
               <div>
                 {pokemon.types.map((t) => (
@@ -67,6 +67,14 @@ return (
                 alt={pokemon.name}
                 className="pokemon-artwork"
               />
+
+               {/* ✅ Delete button */}
+              <button
+                onClick={() => removeFromPokedex(pokemon.name)}
+                className="delete-btn"
+              >
+                ❌ Remove
+              </button>
             </div>
           ))}
         </div>
