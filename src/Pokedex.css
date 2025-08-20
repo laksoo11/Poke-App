@@ -34,6 +34,7 @@
   cursor: pointer;
   transition: 0.3s;
   
+  
 }
 
 .delete-btn:hover {
@@ -41,3 +42,32 @@
 }
 
 
+.toggle-btn {
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #2980b9;
+}
+
+.fav-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #f1c40f;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.fav-btn:hover {
+  background-color: #9fd608;
+}

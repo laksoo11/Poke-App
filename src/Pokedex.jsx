@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PokedexContext } from "./PokedexContext";
 import "./Pokedex.css";
 
@@ -25,7 +25,17 @@ const typeColors = {
 };
 
 const Pokedex = () => {
-  const { pokedex, removeFromPokedex } = useContext(PokedexContext);
+  const {
+     pokedex,
+    favourites,
+    removeFromPokedex,
+    addToFavourites,
+    removeFromFavourites,
+
+  } = useContext(PokedexContext);
+
+
+  const [showFavourites, setShowFavourites] = useState(false);
 
 
    const handleDelete = (name) => {
@@ -34,18 +44,55 @@ const Pokedex = () => {
     );
     if (confirmDelete) {
       removeFromPokedex(name);
+      // setFavourites(favourites.filter((fav) => fav.name !== name));
     }
   };
+
+  //  // ✅ Add favourite with alert
+  // const handleAddFavourite = (pokemon) => {
+  //   addToFavourites(pokemon);
+  //   alert(`${pokemon.name} has been added to your favourites!`);
+  // };
+
+ const handleAddFavourite = (pokemon) => {
+    if (!favourites.find((fav) => fav.name === pokemon.name)) {
+      addToFavourites(pokemon);
+      alert(`${pokemon.name} has been added to your favourites!`);
+    } else {
+      alert(`${pokemon.name} is already in favourites!`);
+    }
+  };
+
+  // ✅ Remove favourite
+  const handleRemoveFavourite = (name) => {
+    removeFromFavourites(name);
+    alert(`${name} has been removed from your favourites!`);
+  };
+
+  
+
+
+const displayList = showFavourites ? favourites : pokedex;
+  
 
 return (
     <div className="pokedex-container">
       <h1>This is your Pokedex</h1>
 
-      {pokedex.length === 0 ? (
-        <p>No Pokémon added yet!</p>
+       {/* ✅ Toggle button */}
+      <button
+        onClick={() => setShowFavourites(!showFavourites)}
+        className="toggle-btn"
+      >
+        {showFavourites ? "Show All Pokémon" : "Show Favourites"}
+      </button>
+
+      {displayList.length === 0 ? (
+        <p>{showFavourites ? "No favourites yet!" : "No Pokémon added yet!"}</p>
       ) : (
+
         <div className="pokedex-grid">
-          {pokedex.map((pokemon, index) => (
+          {displayList.map((pokemon, index) => (
             <div key={index} className="pokedex-card">
               <h2 className="pokemon-name">{pokemon.name}</h2>
 
@@ -77,6 +124,16 @@ return (
                 alt={pokemon.name}
                 className="pokemon-artwork"
               />
+
+               {/* ✅ Add to favourites */}
+              <button
+                onClick={() => handleAddFavourite(pokemon)}
+                className="fav-btn"
+              >
+               {favourites.find((fav) => fav.name === pokemon.name) 
+              ? "❤️ Added to Favourites" 
+              : "🤍 Add to Favourites"}
+              </button>
 
                {/* ✅ Delete button */}
               <button
