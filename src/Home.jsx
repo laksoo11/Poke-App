@@ -156,7 +156,7 @@ const Home = () => {
             <button onClick={handleAddToPokedex}>Add to Pokedex</button>
 
             {/* ✅ Success message */}
-            {success && <p style={{ color: "green", marginTop: "10px" }}>{success}</p>}
+            {success && <p style={{ color: "black", marginTop: "10px" }}>{success}</p>}
 
           </div>
         )}

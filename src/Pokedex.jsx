@@ -27,6 +27,16 @@ const typeColors = {
 const Pokedex = () => {
   const { pokedex, removeFromPokedex } = useContext(PokedexContext);
 
+
+   const handleDelete = (name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to remove ${name} from your Pokédex?`
+    );
+    if (confirmDelete) {
+      removeFromPokedex(name);
+    }
+  };
+
 return (
     <div className="pokedex-container">
       <h1>This is your Pokedex</h1>
@@ -70,7 +80,7 @@ return (
 
                {/* ✅ Delete button */}
               <button
-                onClick={() => removeFromPokedex(pokemon.name)}
+                onClick={() => handleDelete(pokemon.name)}
                 className="delete-btn"
               >
                 ❌ Remove
