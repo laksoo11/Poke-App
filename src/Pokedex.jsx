@@ -135,13 +135,25 @@ return (
               : "🤍 Add to Favourites"}
               </button>
 
-               {/* ✅ Delete button */}
+              {/* 💔 Remove from favourites */}
+              {favourites.find((fav) => fav.name === pokemon.name) && (
+              <button
+                onClick={() => handleRemoveFavourite(pokemon.name)}
+                className="remove-fav-btn"
+              >
+                  💔 Remove from Favourites
+              </button>
+                )}
+
+                 {/* ❌ Remove from Pokedex */}
               <button
                 onClick={() => handleDelete(pokemon.name)}
                 className="delete-btn"
               >
-                ❌ Remove
+                  ❌ Remove from Pokedex
               </button>
+
+
             </div>
           ))}
         </div>
