@@ -4,6 +4,7 @@
   background-color: #333;
   padding: 10px 20px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -28,3 +29,20 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+.settings-btn {
+  background-color: #ff1900;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.settings-btn:hover {
+  background-color: #ff5733;
+}
+
+

@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
+import "./navbar.css";
 
 
 
 const Nabvar = () => {
     return ( 
-        <div>
-            <div className="Navbar">
-                <Link to = "/">Home</Link>
-                <Link to = "/Pokedex">Pokedex</Link>
-            </div>
-        </div>
+         <div className="Navbar">
+        <div className="nav-links">
+        <Link to="/">Home</Link>
+        <Link to="/Pokedex">Pokedex</Link>
+      </div>
+      <button className="settings-btn">Settings</button>
+    </div>
      );
 }
  
