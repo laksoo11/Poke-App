@@ -1,47 +1,23 @@
 // src/PokedexContext.js
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 export const PokedexContext = createContext();
 
 export const PokedexProvider = ({ children }) => {
-
   const [pokedex, setPokedex] = useState([]);
   const [favourites, setFavourites] = useState([]);
 
-
-  // ✅ Fetch from json-server
-  useEffect(() => {
-    fetch("http://localhost:5000/pokedex")
-      .then((res) => res.json())
-      .then((data) => setPokedex(data));
-
-    fetch("http://localhost:5000/favourites")
-      .then((res) => res.json())
-      .then((data) => setFavourites(data));
-  }, []);
-
-
-  // ✅ Add to pokedex
-    const addToPokedex = (pokemon) => {
-    fetch("http://localhost:5000/pokedex", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(pokemon),
-    })
-      .then((res) => res.json())
-      .then((newPokemon) => setPokedex([...pokedex, newPokemon]));
+  const addToPokedex = (pokemon) => {
+    if (!pokedex.find(p => p.name === pokemon.name)) {
+      setPokedex([...pokedex, pokemon]);
+    }
   };
 
-  // ✅ Remove from pokedex
-    const removeFromPokedex = (name) => {
-    const pokemon = pokedex.find((p) => p.name === name);
-    if (!pokemon) return;
+   const removeFromPokedex = (name) => {
 
-    fetch(`http://localhost:5000/pokedex/${pokemon.id}`, {
-      method: "DELETE",
-    }).then(() =>
-      setPokedex(pokedex.filter((p) => p.name !== name))
-    );
+    setPokedex(pokedex.filter((p) => p.name !== name));
+    setFavourites(favourites.filter((fav) => fav.name !== name));
+   
   };
 
   const addToFavourites = (pokemon) => {
