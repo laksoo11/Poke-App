@@ -1,4 +1,6 @@
-
+import { useState } from "react";
+import Pokedex from "./Pokedex";
+import './App.css'
 
 
 

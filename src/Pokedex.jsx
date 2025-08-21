@@ -48,11 +48,6 @@ const Pokedex = () => {
     }
   };
 
-  //  // ✅ Add favourite with alert
-  // const handleAddFavourite = (pokemon) => {
-  //   addToFavourites(pokemon);
-  //   alert(`${pokemon.name} has been added to your favourites!`);
-  // };
 
  const handleAddFavourite = (pokemon) => {
     if (!favourites.find((fav) => fav.name === pokemon.name)) {
